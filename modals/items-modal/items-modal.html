@@ -8,14 +8,13 @@
     <div>
         <form action="">
             <input ng-model="itemsModalInfo.name" type="text" placeholder="Name">
-            <input ng-model="itemsModalInfo.location" type="text" placeholder="Location">
-            <input ng-model="itemsModalInfo.kindOfPhone" type="text" placeholder="Kind Of Phone">
+            <input ng-model="itemsModalInfo.type_of_device" type="text" placeholder="Type Of Device">
             <input ng-model="itemsModalInfo.id" type="text" placeholder="ID">
         </form>
     </div>
 
     <div>
-        <button ng-click="addNewItem()">Add New Item</button>
+        <button ng-click="addItem(itemsModalInfo)">Add New Item</button>
     </div>
 
 

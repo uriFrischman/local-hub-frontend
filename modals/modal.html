@@ -5,10 +5,21 @@
         My Alerts
     </div>
 
-    <div class="alerts-modal-list-of-alerts">
-        <div class="alerts-modal-list-alert">
-            <span ng-click="addAlert()">Add An Alert</span>
-        </div>
+    <div>
+        <form action="">
+            <input type="text" placeholder="Name" ng-model="alertsModalInfo.name">
+            <select name="items" multiple ng-model="alertsModalInfo.items">
+                <option ng-repeat="device in devices" value="{{device}}">{{device.name}}</option>
+            </select>
+            <input type="number" placeholder="Distance in Meters" ng-model="alertsModalInfo.distanceInMeters">
+            <input type="time" placeholder="Time From" ng-model="alertsModalInfo.timeFrom">
+            <input type="time" placeholder="Time To" ng-model="alertsModalInfo.timeTo">
+        </form>
+        
+    </div>
+
+    <div>
+        <button ng-click="addAlert(alertsModalInfo)">Add Alert</button>
     </div>
 
 

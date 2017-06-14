@@ -3,10 +3,10 @@
 
 <div class="slider-device-container">
     <div class="slider-device-icon-container">
-        <i ng-if="device.kind == 'car'" class="icon ion-model-s slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
-        <i ng-if="device.kind == 'wallet'" class="icon ion-cash slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
-        <i ng-if="device.kind == 'keys'" class="icon ion-key slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
-        <i ng-if="device.kind == 'phone'" class="icon ion-iphone slider-device-icon " ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
+        <i ng-if="device.type_of_device == 'car'" class="icon ion-model-s slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
+        <i ng-if="device.type_of_device == 'wallet'" class="icon ion-cash slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
+        <i ng-if="device.type_of_device == 'keys'" class="icon ion-key slider-device-icon"  ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
+        <i ng-if="device.type_of_device == 'phone'" class="icon ion-iphone slider-device-icon " ng-class="{'slider-icon-ok': device.needToAlert, 'slider-icon-not-ok': !device.needToAlert}"></i>
     </div>
 
     <div class="slider-device-content-container">
@@ -15,7 +15,7 @@
                 {{device.name}}
             </div>
             <div class="slider-device-content-device-location">
-                {{device.location}}
+                {{device.location.address}}
             </div>
         </div>
 
