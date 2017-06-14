@@ -1,0 +1,23 @@
+<div class="btf-modal demo-modal">
+    <a class="demo-modal-close" href ng-click="closeItemsModal()">x</a>
+
+    <div class="alerts-modal-title">
+        Add An Item
+    </div>
+
+    <div>
+        <form action="">
+            <input ng-model="itemsModalInfo.name" type="text" placeholder="Name">
+            <input ng-model="itemsModalInfo.location" type="text" placeholder="Location">
+            <input ng-model="itemsModalInfo.kindOfPhone" type="text" placeholder="Kind Of Phone">
+            <input ng-model="itemsModalInfo.id" type="text" placeholder="ID">
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="addNewItem()">Add New Item</button>
+    </div>
+
+
+
+</div>

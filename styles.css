@@ -1,3 +1,7 @@
+body {
+  height: 100vh;
+  background-color: lightblue; }
+
 .page-container {
   display: flex;
   height: 100vh;

@@ -4,11 +4,20 @@ angular.module('localHubAppModals', [
 
 // let's make a modal called `myModal`
 factory('myModal', function (btfModal) {
-    return btfModal({
-        controller: 'MyModalCtrl',
-        controllerAs: 'modal',
-        templateUrl: 'modals/modal.html'
-    });
+    return {
+        newModal: function (fileName, controller) {
+            return btfModal({
+                controller: controller,
+                controllerAs: 'modal',
+                templateUrl: 'modals/' + fileName +'.html'
+            });
+        }
+    }
+    // return btfModal({
+    //     controller: 'MyModalCtrl',
+    //     controllerAs: 'modal',
+    //     templateUrl: 'modals/modal.html'
+    // });
 }).
 
 // typically you'll inject the modal service into its own

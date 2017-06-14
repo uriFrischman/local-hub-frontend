@@ -23,12 +23,11 @@
 
     <div class="navbar-container">
         <div class="navbar-logo-container">
-            {{user}}'s Local Hub
+            <span ng-click="addItem()">{{user}}'s Local Hub</span>
         </div>
         <div class="navbar-menu-container">
             <ul class="navbar_menu">
-                <li class="navbar_menu_item" ng-click="showModal()">My Notifications</li>
-                <li class="navbar_menu_item">My Devices</li>
+                <li class="navbar_menu_item" ng-click="openAlertsModal()">My Alerts</li>
                 <li class="navbar_menu_item">Settings</li>
                 <li class="navbar_menu_item">Logout</li>
             </ul>
@@ -41,6 +40,9 @@
         <div class="device-slider-container">
             <div ng-repeat="device in sampleDevices">
                 <slider-item-card device='device'></slider-item-card>
+            </div>
+            <div class="device-slider-add-alert">
+                <span ng-click="openItemsModal()">Add A Device</span>
             </div>
         </div>
 
