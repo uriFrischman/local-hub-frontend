@@ -1,25 +1,34 @@
-<div class="btf-modal demo-modal">
-   <a class="demo-modal-close" href ng-click="closeItemsModal()">x</a>
+<link rel="stylesheet" href="alerts-modal.css">
 
+<div class="btf-modal demo-modal alertsModal">
+   <!--<a class="demo-modal-close" href ng-click="closeAlertsModal()">x</a>-->
+    <i class="icon ion-close demo-modal-close" ng-click="closeAlertsModal()"></i>
+    <br>
     <div class="alerts-modal-title">
-        My Alerts
+        Add A New Alert
     </div>
 
-    <div>
-        <form action="">
+    <div style="text-align: center">
+        <form action="" style="width: 100%">
             <input type="text" placeholder="Name" ng-model="alertsModalInfo.name">
+            <br>
             <select name="items" multiple ng-model="alertsModalInfo.items">
                 <option ng-repeat="device in devices" value="{{device}}">{{device.name}}</option>
             </select>
+            <br>
             <input type="number" placeholder="Distance in Meters" ng-model="alertsModalInfo.distanceInMeters">
+            <br>
+            Time From
             <input type="time" placeholder="Time From" ng-model="alertsModalInfo.timeFrom">
+            <br>
+            Time To
             <input type="time" placeholder="Time To" ng-model="alertsModalInfo.timeTo">
         </form>
         
     </div>
 
-    <div>
-        <button ng-click="addAlert(alertsModalInfo)">Add Alert</button>
+    <div style="text-align: center">
+        <button class="add-alert-button" ng-click="addAlert(alertsModalInfo)">Add Alert</button>
     </div>
 
 

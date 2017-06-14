@@ -1,6 +1,6 @@
-<div class="btf-modal demo-modal">
-    <a class="demo-modal-close" href ng-click="closeItemsModal()">x</a>
-
+<div class="btf-modal demo-modal itemsModal">
+    <!--<a class="demo-modal-close" href ng-click="closeItemsModal()">x</a>-->
+    <i class="icon ion-close demo-modal-close" ng-click="closeItemsModal()"></i>
     <div class="alerts-modal-title">
         Add An Item
     </div>
@@ -8,8 +8,22 @@
     <div>
         <form action="">
             <input ng-model="itemsModalInfo.name" type="text" placeholder="Name">
-            <input ng-model="itemsModalInfo.type_of_device" type="text" placeholder="Type Of Device">
+            <br>
+            <!--<input ng-model="itemsModalInfo.type_of_device" type="text" placeholder="Type Of Device">-->
+            Type Of Device
+            <select ng-model="itemsModalInfo.type_of_device">
+                <option value="phone">Phone</option>
+                <option value="car">Car</option>
+                <option value="wallet">Wallet</option>
+                <option value="briefcase">Briefcase</option>
+                <option value="camera">Camera</option>
+            </select>
+            <br>
             <input ng-model="itemsModalInfo.id" type="text" placeholder="ID">
+            <br>
+            <input ng-model="itemsModalInfo.long" type="text" placeholder="Longitude">
+            <br>
+            <input ng-model="itemsModalInfo.lat" type="text" placeholder="Latitude">
         </form>
     </div>
 

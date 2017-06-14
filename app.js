@@ -17,6 +17,13 @@ function initMap() {
                 map: map,
                 title: item.name
             });
+            google.maps.event.addListener(marker , 'click', function(){
+                var infowindow = new google.maps.InfoWindow({
+                    content:marker.title,
+                    position: marker.position,
+                });
+                infowindow.open(map);
+            });
         })
     })
 
@@ -33,15 +40,10 @@ var app = angular.module('localHubApp', ['localHubAppModals', 'localHubDirective
 // }]);
 
 app.controller('localHubController', function ($scope, myModal, $http) {
-   $scope.user = 'User';
-   $scope.alertsModal;
-   $scope.itemsModal;
-   $scope.alertsModal = myModal.newModal('modal', 'localHubController');
-   $scope.itemsModal = myModal.newModal('items-modal/items-modal', 'localHubController');
-
-   $scope.searchForDevicesData = "";
+   $scope.user = 'ITC';
 
    $scope.openAlertsModal = function () {
+       $scope.alertsModal = myModal.newModal('modal', 'localHubController');
        $scope.alertsModal.activate();
    };
 
@@ -49,15 +51,17 @@ app.controller('localHubController', function ($scope, myModal, $http) {
    $scope.alertModalInfo = {};
 
    $scope.openItemsModal = function () {
+       $scope.itemsModal = myModal.newModal('items-modal/items-modal', 'localHubController');
        $scope.itemsModal.activate();
    };
 
    $scope.closeItemsModal = function () {
-        $scope.itemsModal.deactivate();
+       $(".itemsModal").remove();
    };
 
+
    $scope.closeAlertsModal = function () {
-       $scope.alertsModal.deactivate();
+       $(".alertsModal").remove();
 
    };
 
@@ -76,18 +80,32 @@ app.controller('localHubController', function ($scope, myModal, $http) {
     }
 
    $scope.addItem = function (data) {
-           var formattedData = {
-               name: data.name,
-               type_of_device: data.type_of_device,
-               _id: data.id,
-               longitude: getRandomInRange(-180, 180,3).toString(),
-               latitude: getRandomInRange(-180, 180,3).toString()
-               // longitude: "40.7589",
-               // latitude: "73.9851"
-           };
+        if (data.long && data.lat) {
+            var formattedData = {
+                name: data.name,
+                type_of_device: data.type_of_device,
+                _id: data.id,
+                longitude: data.long,
+                latitude: data.lat
+            };
+        } else {
+            var formattedData = {
+                name: data.name,
+                type_of_device: data.type_of_device,
+                _id: data.id,
+                longitude: getRandomInRange(-180, 180,3).toString(),
+                latitude: getRandomInRange(-180, 180,3).toString()
+            };
+        }
+
            console.log(formattedData);
-           $.post("http://local-hub.herokuapp.com/api/item", formattedData);
-           $scope.getDevices();
+           $.post("http://local-hub.herokuapp.com/api/item", formattedData, function (data) {
+               console.log("hruejioejfgdisho")
+               $scope.devices.push(formattedData);
+               console.log($scope.devices.length)
+           });
+           // $scope.devices = $scope.getDevices();
+       $(".itemsModal").remove();
    };
 
    $scope.addAlert = function (data) {
@@ -99,6 +117,7 @@ app.controller('localHubController', function ($scope, myModal, $http) {
            item = JSON.parse(item);
            items[index.toString()] = {"_id": item._id, "name": item.name, "item_longitude": item.location.geolocation[1].toString(), "item_latitude": item.location.geolocation[0].toString(), "type_of_device" :item.type_of_device}
        });
+       console.log('ITEMS', items['0'])
 
 
        var times = {
@@ -116,10 +135,32 @@ app.controller('localHubController', function ($scope, myModal, $http) {
         };
         $.post("http://local-hub.herokuapp.com/api/alert", formattedData);
         console.log("formatteddata", formattedData);
+       $(".alertsModal").remove();
    };
 
+    $scope.needToAlert = function () {
+        $http.get("http://local-hub.herokuapp.com/api/alerts").then(function (data) {
+            var allAlerts = data.data;
+            allAlerts.forEach(function (alert) {
+                if (alert.needs_to_alert) {
+                    console.log("these need to be updated");
+                    alert.items.forEach(function (item) {
+                        console.log(item)
+                    })
+                } else {
+                    console.log("these do not need to be updated");
+                    alert.items.forEach(function (item) {
+                        console.log(item)
+                        var index = $scope.devices.indexOf(item);
+                        console.log(index)
+                    })
+                }
+            })
+        })
+    }
 
 
+   //random-gps-server.herokuapp.com/move/ID OF ITEM
 
 
    // $scope.sampleDevices = [

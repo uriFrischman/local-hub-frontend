@@ -1,34 +1,39 @@
 body {
-  height: 100vh;
-  background-color: lightblue; }
+  overflow: scroll;
+  height: 100vh !important;
+  font-family: Futura;
+  background-color: #cbc5c1;
+  padding: 0;
+  margin: 0; }
 
 .page-container {
   display: flex;
   height: 100vh;
   border: 0;
   margin: 0;
-  margin-top: 10px; }
+  margin-top: 10px;
+  background-color: #cbc5c1; }
 
 .navbar-container {
-  height: 40px;
-  display: flex; }
+  height: 50px;
+  display: flex;
+  background-color: #a2aab0; }
 
 .navbar-logo-container {
   width: 20%;
-  background-color: green;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 20px; }
 
 .navbar-menu-container {
-  width: 80%;
-  background-color: purple;
+  width: 60%;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  margin-left: 40%; }
 
 .device-slider-container {
-  width: 30%;
-  background-color: lightblue;
+  width: 29%;
   overflow: scroll;
   height: 100vh; }
 
@@ -40,16 +45,28 @@ body {
   float: left;
   margin-left: 40px;
   margin-right: 40px;
-  font-size: 20px;
+  font-size: 15px;
+  cursor: pointer;
   list-style: none; }
 
+.device-slider-add-alert {
+  text-align: center;
+  padding: 10px;
+  background-color: #ebeced;
+  color: #4c586f; }
+
+.device-slider-add-alert:hover {
+  background-color: #d1d2d3;
+  cursor: pointer; }
+
 .map-container {
-  width: 70%;
+  width: 71%;
   height: 100vh; }
 
 .map {
   height: 100vh;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 2px solid black; }
 
 /*# sourceMappingURL=styles.css.map */

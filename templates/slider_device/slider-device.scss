@@ -1,12 +1,20 @@
+$slider-device-icon-container-width: 25%;
+$slider-device-background-color: #ebeced;
+$slider-device-icon-color: #4c586f;
+
 .slider-device-container {
   height: 150px;
-  background-color: darkgray;
-  width: 100% !important;
+  //background-color: darkgray;
+  width: 90% !important;
+  margin-left: 5%;
   display: flex;
   margin-bottom: 10px;
+  background-color: $slider-device-background-color;
 }
 
-$slider-device-icon-container-width: 25%;
+
+
+
 .slider-device-icon-container {
   width: $slider-device-icon-container-width;
   display: flex;
@@ -16,16 +24,10 @@ $slider-device-icon-container-width: 25%;
 
 .slider-device-icon {
   font-size: 10vh;
+  color: $slider-device-icon-color;
 
 }
 
-.slider-icon-ok {
-  color: #65ff3c;
-}
-
-.slider-icon-not-ok {
-  color: red;
-}
 
 
 
